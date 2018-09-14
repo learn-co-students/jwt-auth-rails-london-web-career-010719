@@ -75,7 +75,7 @@ gem "active_model_serializers", "~> 0.10.7"
 gem "faker", "~> 1.9"
 ```
 
-- Don't forget to enable [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) in your app. Uncomment the following in [`config/initializers/cors.rb`](/45-redux-auth/server/config/initializers/cors.rb). Don't forget to change the origins from `example.com` to `*`
+- Don't forget to enable [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) in your app. Uncomment the following in [`config/initializers/cors.rb`][cors_rb]. Don't forget to change the origins from `example.com` to `*`
 - Depending on the use-case and needs of our API, we might want to limit access to our app. For example, if our React frontend is deployed to `myDankReactApp.com`, we might want to limit access to that domain only. If certain endpoints are meant to be public, we can make those available but limit to `GET` requests, for example.
 
 ```ruby
@@ -104,7 +104,7 @@ end
   - `rails g serializer user` (if you want to [use a serializer](https://www.sitepoint.com/active-model-serializers-rails-and-json-oh-my/))
   - `rails db:migrate`
 
-- Add `has_secure_password` to [`app/models/user.rb`](/45-redux-auth/server/app/models/user.rb). Recall that `has_secure_password` comes from [`ActiveModel` and adds methods to set and authenticate against a BCrypt password](https://api.rubyonrails.org/classes/ActiveModel/SecurePassword/ClassMethods.html#method-i-has_secure_password):
+- Add `has_secure_password` to [`app/models/user.rb`][user_model]. Recall that `has_secure_password` comes from [`ActiveModel` and adds methods to set and authenticate against a BCrypt password](https://api.rubyonrails.org/classes/ActiveModel/SecurePassword/ClassMethods.html#method-i-has_secure_password):
 
 ```ruby
 class User < ApplicationRecord
@@ -245,13 +245,13 @@ end
 
 ---
 
-- Next let's add the routes we'll need for our server. In [`config/routes.rb`](/45-redux-auth/server/config/routes.rb):
+- Next let's add the routes we'll need for our server. In [`config/routes.rb`][routes_rb]:
 
 ```ruby
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
-      resources :users, only: %i[create]
+      resources :users, only: [:create]
       post '/login', to: 'auth#create'
       get '/profile', to: 'users#profile'
     end
@@ -579,7 +579,7 @@ end
 
 ```ruby
 class Api::V1::UsersController < ApplicationController
-  skip_before_action :authorized, only: %i[create]
+  skip_before_action :authorized, only: [:create]
 end
 ```
 
@@ -601,7 +601,7 @@ end
 
 ```ruby
 class Api::V1::AuthController < ApplicationController
-  skip_before_action :authorized, only: %i[create]
+  skip_before_action :authorized, only: [:create]
 
   def create
     @user = User.find_by(username: user_login_params[:username])
@@ -679,7 +679,7 @@ fetch('http://localhost:3000/api/v1/profile', {
 
 ```ruby
 class Api::V1::UsersController < ApplicationController
-  skip_before_action :authorized, only: %i[create]
+  skip_before_action :authorized, only: [:create]
 
   def profile
     render json: { user: UserSerializer.new(current_user) }, status: :accepted
@@ -752,9 +752,12 @@ render json: { message: 'Please log in' }, status: :unauthorized
 
 <!-- Markdown Variables -->
 
-[gemfile]: /45-redux-auth/server/Gemfile
-[schema]: /45-redux-auth/server/db/schema.rb
-[application_controller]: /45-redux-auth/server/app/controllers/application_controller.rb
-[auth_controller]: /45-redux-auth/server/app/controllers/api/v1/auth_controller.rb
-[users_controller]: /45-redux-auth/server/app/controllers/api/v1/users_controller.rb
-[user_serializer]: /45-redux-auth/server/app/serializers/user_serializer.rb
+[gemfile]: /server/Gemfile
+[schema]: /server/db/schema.rb
+[application_controller]: /server/app/controllers/application_controller.rb
+[auth_controller]: /server/app/controllers/api/v1/auth_controller.rb
+[users_controller]: /server/app/controllers/api/v1/users_controller.rb
+[user_model]: /server/app/models/user.rb
+[user_serializer]: /server/app/serializers/user_serializer.rb
+[cors_rb]: /server/config/initializers/cors.rb
+[routes_rb]: /server/config/routes.rb
