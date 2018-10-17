@@ -391,7 +391,7 @@ fetch('http://localhost:3000/api/v1/profile', {
 
 ---
 
-- Knowing this, we can set up our server to anticipate a JWT sent along in request headers:
+- Knowing this, we can set up our server to anticipate a JWT sent along in request headers, _instead_ of passing the token directly to `ApplicationController#decoded_token`:
 
 ```ruby
 class ApplicationController < ActionController::API
