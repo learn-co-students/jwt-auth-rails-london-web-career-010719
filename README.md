@@ -761,3 +761,4 @@ render json: { message: 'Please log in' }, status: :unauthorized
 [user_serializer]: /server/app/serializers/user_serializer.rb
 [cors_rb]: /server/config/initializers/cors.rb
 [routes_rb]: /server/config/routes.rb
+ 
