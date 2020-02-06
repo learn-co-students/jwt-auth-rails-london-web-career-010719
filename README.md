@@ -102,6 +102,7 @@ end
   - `rails g model User username password_digest bio avatar`
   - `rails g controller api/v1/users`
   - `rails g serializer user` (if you want to [use a serializer](https://www.sitepoint.com/active-model-serializers-rails-and-json-oh-my/))
+  - `rails db:create`
   - `rails db:migrate`
 
 - Add `has_secure_password` to [`app/models/user.rb`][user_model]. Recall that `has_secure_password` comes from [`ActiveModel` and adds methods to set and authenticate against a BCrypt password](https://api.rubyonrails.org/classes/ActiveModel/SecurePassword/ClassMethods.html#method-i-has_secure_password):
