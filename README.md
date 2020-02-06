@@ -197,7 +197,7 @@ end
   => false
 
 > User.last.authenticate('P@ssw0rd')
-  => #<User id: 21, username: "Guy", password_digest: "$2a$10$dw4sYcbLXc8XRX6YGc7ve.ot6LbYevMbSpFQZUaa8tm...", avatar: nil, created_at: "2018-08-31 02:11:15", updated_at: "2018-08-31 02:11:15", bio: "I love flavortown, USA">
+  => #<User id: 21, username: "sylviawoods", password_digest: "$2a$10$dw4sYcbLXc8XRX6YGc7ve.ot6LbYevMbSpFQZUaa8tm...", avatar: nil, created_at: "2018-08-31 02:11:15", updated_at: "2018-08-31 02:11:15", bio: "'Sylvia Woods was an American restaurateur who founded the sould food restaurant Sylvia's in Harlem on Lenox Avenue, New York City in 1962. She published two cookbooks and was an important figure in the community.">
 ```
 
 - Instead of creating our own `User#authenticate` method, we can use [`ActiveModel#has_secure_password`](https://api.rubyonrails.org/classes/ActiveModel/SecurePassword/ClassMethods.html#method-i-has_secure_password):
@@ -273,16 +273,17 @@ fetch('http://localhost:3000/api/v1/users', {
   },
   body: JSON.stringify({
     user: {
-      username: 'guy',
-      password: 'hi',
-      bio: 'King of Flavortown, USA',
-      avatar: 'https://upload.wikimedia.org/wikipedia/commons/9/9a/Guy_Fieri_at_Guantanamo_2.jpg'
+      username: 'sylviawoods',
+      password: 'whatscooking',
+      bio: 'Sylvia Woods was an American restaurateur who founded the sould food restaurant Sylvia's in Harlem on Lenox Avenue, New York City in 1962. She published two cookbooks and was an important figure in the community.',
+      avatar: 'https://upload.wikimedia.org/wikipedia/commons/4/49/Syvia_of_Sylvia%27s_reaturant_N.Y.C_%28cropped%29.jpg'
     }
   })
 })
   .then(r => r.json())
   .then(console.log)
 ```
+**note** if you're using Postman and your formatting is set to "raw and JSON", remember to use double quotes ("") in both keys and values in the request.
 
 ---
 
@@ -714,7 +715,6 @@ render json: { message: 'Please log in' }, status: :unauthorized
 
 ## That's It For the Server!
 
-![i am done gif](https://media.giphy.com/media/lS74OiH1JYYak/giphy.gif)
 
 ---
 
