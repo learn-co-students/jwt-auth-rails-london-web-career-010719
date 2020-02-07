@@ -587,11 +587,11 @@ end
 
 - It wouldn't make sense to ask our users to be logged in before they create an account. This circular logic will make it **impossible** for users to authenticate into the app. How can a user create an account if our app asks them to be logged in or `authorized` to do so? Skipping the before action 'unlocks' this portion of our app.
 
-![wut](https://media.giphy.com/media/1L5YuA6wpKkNO/giphy.gif)
+![omg](https://gph.is/2ym2UZj)
 
 - Try creating a new user again with either [postman](https://www.getpostman.com/apps) or fetch and confirm that your server successfully issues a token on signup.
 
-![sign me up gif](https://media.giphy.com/media/xUOrw5LIxb8S9X1LGg/giphy.gif)
+![sign me up gif](https://gph.is/g/aQ92JBa)
 
 ---
 
