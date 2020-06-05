@@ -599,7 +599,7 @@ end
 
 - A token should be issued in two different controller actions: [`UsersController#create`][users_controller] and [`AuthController#create`][auth_controller]. Think about what these methods are responsible for––**a user signing up for our app for the first time** and **an already existing user logging back in**. In both cases, our server needs to issue a new token🥇.
 
-- We'll need to create a new controller to handle login: `rails g controller api/v1/auth` and let's add the following to this newly created [AuthController][auth_controller]:
+- We'll need to create a new controller to handle login: `rails g controller api/v1/auth`. Next, let's add the following to this newly created [AuthController][auth_controller]:
 
 ```ruby
 class Api::V1::AuthController < ApplicationController
