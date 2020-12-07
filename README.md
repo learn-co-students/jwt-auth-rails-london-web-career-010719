@@ -287,7 +287,7 @@ fetch('http://localhost:3000/api/v1/users', {
 
 ---
 
-# Make Sure You Can POST and Create a New User Before Proceeding
+## Make Sure You Can POST and Create a New User Before Proceeding
 
 ![intermission](https://media.giphy.com/media/pcPs6v6fhE7Ru/giphy.gif)
 
