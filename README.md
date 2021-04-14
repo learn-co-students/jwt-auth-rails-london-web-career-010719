@@ -76,7 +76,7 @@ gem "faker", "~> 1.9"
 ```
 
 - Don't forget to enable [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) in your app. Uncomment the following in [`config/initializers/cors.rb`][cors_rb]. Don't forget to change the origins from `example.com` to `*`
-- Depending on the use-case and needs of our API, we might want to limit access to our app. For example, if our React frontend is deployed to `myDankReactApp.com`, we might want to limit access to that domain only. If certain endpoints are meant to be public, we can make those available but limit to `GET` requests, for example.
+- Depending on the use-case and needs of our API, we might want to limit access to our app. For example, if our React frontend is deployed to `myCoolReactApp.com`, we might want to limit access to that domain only. If certain endpoints are meant to be public, we can make those available but limit to `GET` requests, for example.
 
 ```ruby
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
